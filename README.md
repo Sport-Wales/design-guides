@@ -6,14 +6,10 @@ This repository contains the official design and development documentation for S
 ## Repository Structure
 ```
 sport-wales-design-guides/
-├── docs/
-│   └── SWBG.md           # Sport Wales Brand Guidelines
-│   └── SWCF.md           # Sport Wales Component Functionality
-│   └── SWGS.md           # Sport Wales Global Style Sheet
-│   └── SWPT.md           # Sport Wales Project Template
-├── examples/             # Example implementations
-├── assets/              # Design assets and resources
-└── README.md            # This file
+ └── SWBG.md           # Sport Wales Brand Guidelines
+ └── SWCF.md           # Sport Wales Component Functionality
+ └── SWGS.md           # Sport Wales Global Style Sheet
+ └── SWPT.md           # Sport Wales Project Template
 ```
 
 ## Simple Explanation 
