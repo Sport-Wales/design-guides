@@ -1,7 +1,6 @@
 /* src/styles/index.css */
 /* SW Global Styles Sheet (SWGS) */
 
-/* Sport Wales Global Styles Sheet (SWGS) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +12,17 @@
   right: 1rem;
   z-index: 50;
 }
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+
 
 /* Font Face Declarations */
 @font-face {
@@ -211,7 +221,7 @@
 
   /* Header Components */
   .sw-header {
-    @apply sw-bg-red text-white p-6;
+    @apply sw-bg-blue text-white p-6;
   }
 
   .sw-heading-primary {
