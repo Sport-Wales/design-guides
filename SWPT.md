@@ -125,7 +125,143 @@ export function YourNewPage() {
 <Route path="/your-path" element={<YourNewPage />} />
 ```
 
+
+## Understanding the Style System
+
+### Base Styling Architecture
+
+Our styling system combines Tailwind CSS with Sport Wales' custom design system. Think of it as a layered approach:
+
+1. **Tailwind Base Layer**: The foundation
+2. **Sport Wales Custom Variables**: Our brand-specific values
+3. **Component-Specific Styles**: Pre-built, consistent components
+4. **Utility Classes**: Quick style modifications
+
+### How Our Style System Works
+
+#### CSS Variables and Brand Colors
+
+In `src/styles/index.css`, we define our brand-specific CSS variables:
+
+```css
+:root {
+  /* Primary Brand Colors */
+  --color-sw-red: #E32434;
+  --color-sw-yellow: #F6B207;
+  --color-sw-blue: #164B64;
+  --color-sw-green: #299D91;
+
+  /* Typography */
+  --font-primary: 'Objektiv MK1', 'Montserrat', Arial, sans-serif;
+  --font-size-body: 16px;
+  --line-height-normal: 110%;
+}
+```
+
+These variables are then integrated with Tailwind in `tailwind.config.js`:
+
+```javascript
+export default {
+  theme: {
+    extend: {
+      colors: {
+        'sw-red': '#E32434',
+        'sw-blue': '#164B64',
+        // other colors...
+      },
+      fontSize: {
+        'body': '20px',
+        'hero': '95px',
+      }
+    }
+  }
+}
+```
+
+#### Using the Style System
+
+1. **Basic Component Styling**:
+```jsx
+// Using Sport Wales utility classes
+<button className="sw-button-primary">
+  Click Me
+</button>
+
+// Same button with additional Tailwind utilities
+<button className="sw-button-primary mt-4 hover:opacity-80">
+  Click Me
+</button>
+```
+
+2. **Layout Components**:
+```jsx
+// Sport Wales container with Tailwind spacing
+<div className="sw-container py-8">
+  <div className="sw-card">
+    Content here
+  </div>
+</div>
+```
+
+3. **Text Styling**:
+```jsx
+// Combining Sport Wales and Tailwind classes
+<h1 className="sw-heading-primary text-sw-blue mb-6">
+  Main Heading
+</h1>
+```
+
+#### Custom Components and Overrides
+
+Our `@layer components` defines Sport Wales-specific components:
+
+```css
+@layer components {
+  .sw-button {
+    height: var(--button-height);
+    padding: var(--button-padding);
+    border-radius: var(--border-radius-button);
+    @apply font-semibold transition-all duration-300;
+  }
+
+  .sw-card {
+    @apply rounded-lg bg-white p-6 shadow-md;
+  }
+}
+```
+
+#### Responsive Design
+
+Our components are mobile-first and use Tailwind's responsive prefixes:
+
+```jsx
+<div className="sw-container">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {/* Content */}
+  </div>
+</div>
+```
+
+#### Form Components
+
+Form elements use our custom styles with Tailwind utility classes:
+
+```jsx
+<form className="space-y-6">
+  <div>
+    <label className="sw-label">Input Label</label>
+    <input 
+      className="sw-input w-full focus:ring-sw-blue" 
+      type="text"
+    />
+  </div>
+</form>
+```
+
+
 ### Styling Guidelines
+
+
 
 1. Using Sport Wales classes:
 ```jsx
@@ -147,6 +283,7 @@ export function YourNewPage() {
   /* Your styles here */
 }
 ```
+
 
 ## Deployment Options
 
@@ -276,3 +413,6 @@ This project template is proprietary to Sport Wales. All rights reserved.
 - Follow the established coding standards and patterns
 
 Need help? Contact the development team or raise an issue in the repository.
+
+
+
